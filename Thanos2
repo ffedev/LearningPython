@@ -1,0 +1,98 @@
+import random
+
+header = "\
+  _____        __ _       _ _            _____                   _   _      _\n\
+ |_   _|      / _(_)     (_) |          / ____|                 | | | |    | |  \n\
+   | |  _ __ | |_ _ _ __  _| |_ _   _  | |  __  __ _ _   _ _ __ | |_| | ___| |_ \n\
+   | | | '_ \|  _| | '_ \| | __| | | | | | |_ |/ _` | | | | '_ \| __| |/ _ \ __|\n\
+  _| |_| | | | | | | | | | | |_| |_| | | |__| | (_| | |_| | | | | |_| |  __/ |_ \n\
+ |_____|_| |_|_| |_|_| |_|_|\__|\__, |  \_____|\__,_|\__,_|_| |_|\__|_|\___|\__|\n\
+                                 __/ |                                          \n\
+ v1.4                           |___/  \n"
+
+Avengers = ["Hawkeye", "Black Widow", "Ant-Man", "Falcon",
+            "Winter Soldier", "War Machine", "Spider-Man",
+            "Captain America", "Iron Man", "Black Panther",
+            "Scarlet Witch", "Vision", "Thor", "Hulk",
+            "Thanos", "Star-Lord", "Gamora", "Loki",
+            "Quicksilver", "Doctor Strange", "Nebula",
+            "Nick Fury",
+            "Rocket", "Heimdall", "Groot", "Drax",
+            "Mantis"]
+
+
+def coinToss():
+    flip = random.randrange(2)
+    return flip
+
+
+fmt = '| {:<16s} | {:<6s} |'
+
+
+def fingerSnap():
+    for i in range(len(Avengers)):
+        coinToss()
+        if coinToss() == 0:
+            print(fmt.format(Avengers[i], "Vive"))
+        else:
+            print(fmt.format(Avengers[i], "Muore"))
+
+
+def welcome():
+    print("Con questo programma puoi schioccare le dita e scoprire quali Avengers \n\
+verranno distrutti dal guanto dell'infinito\n")
+
+
+print(header)
+welcome()
+
+
+def menu_comandi():
+    print(" ________________________Comandi__________________________")
+    print("|                                                        |")
+    print("|'m' torna al menù dei comandi                           |")
+    print("|'s' Schiocca le dita con il guanto dell'infinito        |")
+    print("|'a' Aggiungi personaggi extra alla lista degli Avengers |")
+    print("|'c' Credits                                             |")
+    print("|'e' esci dal programma                                  |")
+    print("|________________________________________________________|")
+
+
+comando = "m"
+while comando != "e":
+    if comando == "s":
+        fingerSnap()
+        comando = input("Comandi: ")
+    elif comando == "a":
+        add = input("Aggiungi un nome: ")
+        if add not in Avengers:
+            Avengers.append(add)
+        comando = input("Comandi: ")
+    elif comando == "c":
+        print("Made By Trenton!")
+        comando = input("Comandi: ")
+    elif comando == "m":
+        menu_comandi()
+        comando = input("Inserisci un comando: ")
+    elif comando == "e":
+        print(" ", end="")
+    else:
+        print("Comando non accettato, gli input sono case-sensitive")
+        comando = input("Inserisci un comando valido: ")
+
+# Da aggiungere:
+# Lingua Eng
+# Easter eggs !
+
+# print(fingerSnap())
+
+# Aggiungi i tuoi amici:
+# Scommetti su uno di loro
+
+# def fingerSnap():
+#    for i in range(len(Avengers)):
+#        coinToss()
+#        if coinToss() == 0:
+#            print(Avengers[i] + ": Vive")
+#        else:
+#            print(Avengers[i] + ": Muore")
